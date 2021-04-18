@@ -32,7 +32,7 @@ export default function EnterWish() {
       if (response.ok) {
       }
     } catch (error) {
-      console.error(error);
+      console.error(error, 42);
     }
   };
 
