@@ -5,6 +5,7 @@ import styles from "./enter-wish.module.css";
 export default function EnterWish() {
   const [counter, setCounter] = useState(0);
   const [wish, setWish] = useState("");
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     const dtCurrent = Date.now();
@@ -13,6 +14,10 @@ export default function EnterWish() {
     const msDiff = dtWahl - dtCurrent;
     const days = Math.round(msDiff / (1000 * 60 * 60 * 24));
     setCounter(days);
+  }, []);
+
+  useEffect(() => {
+    // load userId from local storage
   }, []);
 
   const onClickSend = async () => {
@@ -24,7 +29,8 @@ export default function EnterWish() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      console.log(response.statusText);
+      if (response.ok) {
+      }
     } catch (error) {
       console.error(error);
     }
@@ -38,7 +44,7 @@ export default function EnterWish() {
       <p className={styles.cen}>bis zur Bundestagswahl am 26. September 2021</p>
 
       <div className={styles.cen}>
-        <div className={styles.wish}>Mein Wunsch an die neue Regierung:</div>
+        <div className={styles.wish}>Meine Wünsche an die neue Regierung:</div>
         <input
           className={styles.input}
           value={wish}

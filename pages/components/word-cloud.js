@@ -23,7 +23,11 @@ const WordCloud = () => {
     return null;
   } else {
     // https://react-wordcloud.netlify.app/usage/basic
-    return <ReactWordcloud words={words} />;
+    return (
+      <div style={{ width: "100%", height: "100%" }}>
+        <ReactWordcloud words={words} />
+      </div>
+    );
   }
 };
 
